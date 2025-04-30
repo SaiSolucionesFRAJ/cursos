@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia de Ingeniería Vial - Cursos de Diseño Geométrico de Carreteras</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #1a3a6b;
+            --secondary-color: #043277;
+            --accent-color: #ff6b00;
+            --hover-color: #e25a00;
+            --text-color: #333333;
+            --light-text: #ffffff;
+            --menu-bg: #1a3a6b;
+            --bg-light: #f7f9fc;
+            --gray-bg: #edf0f5;
+            --dark-bg: #1a3a6b;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --success-color: #34a853;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Top Bar Styles */
+        .top-bar {
+            background: var(--secondary-color);
+            color: var(--light-text);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .container-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .left-info,
+        .right-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons i {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons i:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 5px;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+            font-size: 15px;
+        }
+
+        .main-nav {
+            background-color: var(--menu-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu > li {
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .menu > li > a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .menu > li > a:hover {
+            color: var(--hover-color);
+        }
+
+        .dropdown > a::after {
+            content: "▾";
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 250px;
+            background: var(--secondary-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 24px;
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--hover-color);
+            padding-left: 30px;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            padding: 60px 0;
+            color: var(--light-text);
+        }
+
+        .hero-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .container-left {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .container-left h1 {
+            font-family: "Anton", sans-serif;
+            font-size: 76px;
+            margin-bottom: 20px;
+            font-weight: normal;
+            line-height: 1.1;
+        }
+
+        .container-left h1 span {
+            color: var(--accent-color);
+            font-family: "Anton", sans-serif;
+            font-size: 55px;
+            display: block;
+        }
+
+        .container-left p {
+            font-size: 19px;
+            margin-bottom: 30px;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .container-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animated-image {
+            max-width: 60%;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
+            display: none;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .animated-image.active {
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .slider-container {
+            position: relative;
+            margin-bottom: 30px;
+            min-height: 200px;
+        }
+
+        .slide {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+
+        .slider-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background-color: var(--accent-color);
+        }
+
+        .courses {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: "Anton", sans-serif;
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .course-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .course-content p {
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        .course-button {
+            display: block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .course-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .methodology {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+        }
+
+        .methodology-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .methodology-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .methodology-content h2 {
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-family: "Anton", sans-serif;
+        }
+
+        .methodology-steps {
+            margin-top: 30px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 20px;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+
+        .features {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            margin-bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-family: "Anton", sans-serif;
+        }
+
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--accent-color);
+            color: white;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .contact-info-footer div {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid var(--accent-color);
+            text-align: center;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Animaciones */
+        .animate-fadeIn { animation: fadeIn 1s; }
+        .animate-slideUp { animation: slideUp 1s; }
+        .animate-slideLeft { animation: slideLeft 1s; }
+        .animate-slideRight { animation: slideRight 1s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideLeft {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .top-bar { display: none; }
+            .hamburger { display: block; }
+            .menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--menu-bg);
+                flex-direction: column;
+                transition: 0.3s ease-in-out;
+                overflow-y: auto;
+                padding: 20px 0;
+            }
+            .menu.active { left: 0; }
+            .menu > li {
+                width: 100%;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .menu > li > a {
+                padding: 15px 20px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.05);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+            }
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+                transition: max-height 0.5s ease-in;
+            }
+            .dropdown-menu a {
+                padding: 12px 40px;
+                color: var(--light-text);
+                opacity: 0.9;
+            }
+            .dropdown-menu a:hover {
+                background-color: var(--hover-color);
+                padding-left: 45px;
+            }
+            .dropdown.active > a::after { transform: rotate(180deg); }
+            .hero-container { flex-direction: column; text-align: center; }
+            .container-left h1 { font-size: 48px; }
+            .container-left h1 span { font-size: 36px; }
+            .slider-container { min-height: 300px; }
+            .courses-grid, .features-grid, .methodology-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="container-bar">
+            <div class="left-info">
+                <span><i class="fas fa-phone"></i> +59177622539</span>
+                <span><i class="fas fa-envelope"></i> tuacademiaprofesional@gmail.com</span>
+            </div>
+            <div class="right-info">
+                <span><i class="fas fa-book"></i> RECURSOS</span>
+                <span><i class="fas fa-blog"></i> BLOG</span>
+                <div class="social-icons">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo animate-fadeIn">
+                <img src="LOGO2.png" alt="Academia de Ingeniería Vial" height="80" />
+            </div>
+            <button class="hamburger" aria-label="Menú">☰</button>
+            <ul class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#cursos">Cursos</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#dg-detalle">Diseño Geométrico</a></li>
+                        <li><a href="#oh-detalle">Obras Hidráulicas</a></li>
+                        <li><a href="#pl-detalle">Parcelamiento</a></li>
+                    </ul>
+                </li>
+                <li><a href="#metodologia">Metodología</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="container hero-container">
+            <div class="container-left animate-fadeIn">
+                <div class="slider-container">
+                    <div class="slide active">
+                        <h1 class="animate-fadeIn">Diseño Geométrico<br /><span>AASHTO DG2018</span></h1>
+                        <p class="animate-fadeIn">Formación profesional avanzada en diseño de carreteras con enfoque técnico y práctico.</p>
+                        <a href="https://wa.link/ngesh1" class="contact-btn animate-fadeIn">EXPLORAR CURSOS</a>
+                    </div>
+                    <div class="slide">
+                        <h1 class="animate-fadeIn">Obras Hidráulicas<br /><span>Canales Abiertos</span></h1>
+                        <p class="animate-fadeIn">Diseño profesional de canales con secciones transversales programadas.</p>
+                        <a href="https://wa.link/ngesh1" class="contact-btn animate-fadeIn">VER DETALLES</a>
+                    </div>
+                    <div class="slide">
+                        <h1 class="animate-fadeIn">Parcelamiento<br /><span>y Lotización</span></h1>
+                        <p class="animate-fadeIn">Técnicas avanzadas con plantillas y herramientas automatizadas.</p>
+                        <a href="https://wa.link/ngesh1" class="contact-btn animate-fadeIn">VER DETALLES</a>
+                    </div>
+                    <div class="slider-navigation">
+                        <span class="nav-dot active" data-index="0"></span>
+                        <span class="nav-dot" data-index="1"></span>
+                        <span class="nav-dot" data-index="2"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container-right">
+                <div class="image-slider">
+                    <img src="carr.png" alt="Carreteras" class="animated-image active" />
+                    <img src="PLA.png" alt="Canales" class="animated-image" />
+                    <img src="loti.png" alt="Parcelamiento" class="animated-image" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses" id="cursos">
+        <div class="container">
+            <div class="section-title animate-slideUp">
+                <h2>Nuestros Cursos Especializados</h2>
+                <p>Formación integral con enfoque práctico en ingeniería vial mediante herramientas profesionales y normativas actualizadas</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card animate-fadeIn">
+                    <div class="course-image">
+                        <img src="carretera.jpg" alt="Diseño Geométrico de Carreteras" />
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Intermedio-Avanzado</span>
+                        <h3>Diseño Geométrico de Carreteras</h3>
+                        <p>Aprende el proceso completo de diseño bajo normativa AASHTO DG2018, desde la instalación del software hasta el ploteo de planos finales.</p>
+                        <div class="course-meta">
+                            <span>Duración: 60 horas</span>
+                            <span>Modalidad: Virtual/Presencial</span>
+                        </div>
+                        <a href="#dg-detalle" class="course-button">Ver detalles</a>
+                    </div>
+                </div>
+                <div class="course-card animate-fadeIn">
+                    <div class="course-image">
+                        <img src="canales.png" alt="Obras Hidráulicas" />
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Especializado</span>
+                        <h3>Obras Hidráulicas - Canales Abiertos</h3>
+                        <p>Diseño profesional de canales abiertos con secciones transversales programadas para convergencias y cambios de sección.</p>
+                        <div class="course-meta">
+                            <span>Duración: 40 horas</span>
+                            <span>Modalidad: Virtual/Presencial</span>
+                        </div>
+                        <a href="#oh-detalle" class="course-button">Ver detalles</a>
+                    </div>
+                </div>
+                <div class="course-card animate-fadeIn">
+                    <div class="course-image">
+                        <img src="lotizacion.jpg" alt="Parcelamiento y Lotización" />
+                    </div>
+                    <div class="course-content">
+                        <span class="course-tag">Profesional</span>
+                        <h3>Parcelamiento y Lotización</h3>
+                        <p>Domina técnicas avanzadas de parcelación con plantillas configuradas y herramientas automatizadas para replanteo.</p>
+                        <div class="course-meta">
+                            <span>Duración: 30 horas</span>
+                            <span>Modalidad: Virtual/Presencial</span>
+                        </div>
+                        <a href="#pl-detalle" class="course-button">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="methodology" id="metodologia">
+        <div class="container methodology-container">
+            <div class="methodology-image animate-slideLeft">
+                <img src="SOP.png" alt="Metodología de enseñanza" />
+            </div>
+            <div class="methodology-content animate-slideRight">
+                <h2>Formación práctica con enfoque profesional</h2>
+                <p>Nuestro método educativo se basa en el desarrollo progresivo de habilidades técnicas aplicadas a casos reales de ingeniería vial.</p>
+                <div class="methodology-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Fundamentos técnicos y normativa</h4>
+                            <p>Comprensión profunda de la normativa AASHTO DG2018 y criterios de diseño.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Dominio de herramientas digitales</h4>
+                            <p>Instalación y configuración avanzada de software especializado.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Programación y automatización</h4>
+                            <p>Desarrollo de macros y herramientas personalizadas.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Proyecto integral aplicado</h4>
+                            <p>Ejecución completa de un proyecto desde datos hasta documentación final.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="dg-detalle">
+        <div class="container">
+            <div class="section-title animate-slideUp">
+                <h2>Diseño Geométrico de Carreteras</h2>
+                <p>Domina el proceso completo bajo normativa AASHTO DG2018</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">1</div>
+                    <h3>Preparación y Modelado</h3>
+                    <p>• Instalación y configuración de software<br>• Importación de nube de puntos<br>• Creación de superficies</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">2</div>
+                    <h3>Alineamiento Horizontal</h3>
+                    <p>• Velocidad de diseño según normativa<br>• Cálculo de peraltes y sobreanchos<br>• Diseño de curvas</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">3</div>
+                    <h3>Perfil Longitudinal</h3>
+                    <p>• Creación de perfil DG2018<br>• Curvas verticales<br>• Cálculos de rasante</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">4</div>
+                    <h3>Secciones Transversales</h3>
+                    <p>• Subensamblajes con Composer<br>• Configuración de capas<br>• Programación avanzada</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">5</div>
+                    <h3>Corredor y Obra Lineal</h3>
+                    <p>• Configuración de targets<br>• Secciones con taludes<br>• Generación de corredor</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">6</div>
+                    <h3>Cómputos y Replanteo</h3>
+                    <p>• Cálculo de volúmenes<br>• Puntos de replanteo<br>• Ploteo de planos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="oh-detalle">
+        <div class="container">
+            <div class="section-title animate-slideUp">
+                <h2>Obras Hidráulicas - Canales Abiertos</h2>
+                <p>Diseño avanzado de estructuras hidráulicas</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">1</div>
+                    <h3>Fundamentos Hidráulicos</h3>
+                    <p>• Principios de flujo<br>• Características geométricas<br>• Diseño preliminar</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">2</div>
+                    <h3>Programación Subassembly</h3>
+                    <p>• Secciones programables<br>• Subensamblajes multidimensionales<br>• Validación hidráulica</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">3</div>
+                    <h3>Adaptabilidad Geométrica</h3>
+                    <p>• Convergencias<br>• Intersecciones<br>• Transiciones de sección</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="pl-detalle">
+        <div class="container">
+            <div class="section-title animate-slideUp">
+                <h2>Parcelamiento y Lotización</h2>
+                <p>Técnicas avanzadas para diseño y replanteo</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">1</div>
+                    <h3>Plantillas Profesionales</h3>
+                    <p>• Configuración optimizada<br>• Tablas dinámicas<br>• Rotulación técnica</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">2</div>
+                    <h3>Automatización de Replanteo</h3>
+                    <p>• Macros avanzados<br>• Conversión de coordenadas<br>• Reportes técnicos</p>
+                </div>
+                <div class="feature-card animate-fadeIn">
+                    <div class="feature-icon">3</div>
+                    <h3>Documentación Técnica</h3>
+                    <p>• Planos de parcelamiento<br>• Memorias descriptivas<br>• Expedientes técnicos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contacto">
+        <div class="container">
+            <h2 class="animate-slideUp">¡Impulsa tu carrera profesional!</h2>
+            <p class="animate-fadeIn">Únete a nuestros cursos especializados y adquiere habilidades de alto valor en ingeniería vial.</p>
+            <form class="contact-form animate-fadeIn">
+                <div class="form-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                    <select id="curso" name="curso" required>
+                        <option value="" disabled selected>Selecciona un curso</option>
+                        <option value="dg">Diseño Geométrico de Carreteras</option>
+                        <option value="oh">Obras Hidráulicas</option>
+                        <option value="pl">Parcelamiento y Lotización</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="4"></textarea>
+                </div>
+                <button type="submit" class="contact-btn">ENVIAR SOLICITUD</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-column footer-about animate-slideUp">
+                <h3>Sobre Nosotros</h3>
+                <p>Academia de Ingeniería Vial ofrece formación especializada en diseño geométrico de carreteras y obras de infraestructura con más de 10 años de experiencia.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links animate-slideUp">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#metodologia">Metodología</a></li>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-links animate-slideUp">
+                <h3>Nuestros Cursos</h3>
+                <ul>
+                    <li><a href="#dg-detalle">Diseño Geométrico</a></li>
+                    <li><a href="#oh-detalle">Obras Hidráulicas</a></li>
+                    <li><a href="#pl-detalle">Parcelamiento</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact animate-slideUp">
+                <h3>Contáctanos</h3>
+                <div class="contact-info-footer">
+                    <div><i class="fas fa-map-marker-alt"></i><p>La Paz - Bolivia</p></div>
+                    <div><i class="fas fa-phone"></i><p><a href="tel:+51987654321">+59177622539</a></p></div>
+                    <div><i class="fas fa-envelope"></i><p><a href="mailto:info@academiavial.pe">tuacademiaprofesional@gmail.com</a></p></div>
+                    <div><i class="fas fa-clock"></i><p>Lun - Vie: 9:00 - 18:00</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Academia de Ingeniería Vial. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.link/ngesh1" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+            }
+
+            function animateOnScroll() {
+                const animatedElements = document.querySelectorAll(".animate-slideUp, .animate-slideLeft, .animate-slideRight, .animate-fadeIn");
+                animatedElements.forEach((element) => {
+                    if (isInViewport(element) && !element.classList.contains("animated")) {
+                        element.classList.add("animated");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", animateOnScroll);
+            animateOnScroll();
+
+            const hamburger = document.querySelector(".hamburger");
+            const menu = document.querySelector(".menu");
+            const dropdowns = document.querySelectorAll(".dropdown");
+
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+
+            if (hamburger) {
+                hamburger.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    menu.classList.toggle("active");
+                    this.classList.toggle("active");
+                });
+            }
+
+            dropdowns.forEach((dropdown) => {
+                const link = dropdown.querySelector("a");
+                const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+
+                if (link) {
+                    link.addEventListener("click", function (e) {
+                        if (isMobile()) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            dropdowns.forEach((other) => {
+                                if (other !== dropdown) other.classList.remove("active");
+                            });
+                            dropdown.classList.toggle("active");
+                        }
+                    });
+                }
+
+                if (dropdownMenu) dropdownMenu.addEventListener("click", (e) => e.stopPropagation());
+            });
+
+            document.addEventListener("click", function (e) {
+                if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+                    menu.classList.remove("active");
+                    hamburger.classList.remove("active");
+                    if (isMobile()) dropdowns.forEach((dropdown) => dropdown.classList.remove("active"));
+                }
+            });
+
+            window.addEventListener("resize", function () {
+                if (!isMobile() && menu && hamburger) {
+                    menu.classList.remove("active");
+                    hamburger.classList.remove("active");
+                    dropdowns.forEach((dropdown) => dropdown.classList.remove("active"));
+                }
+            });
+
+            let currentSlideIndex = 0;
+            const slides = document.querySelectorAll(".slide");
+            const images = document.querySelectorAll(".animated-image");
+            const dots = document.querySelectorAll(".nav-dot");
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                if (slides.length === 0) return;
+                slides.forEach((slide) => slide.classList.remove("active"));
+                images.forEach((img) => img.classList.remove("active"));
+                dots.forEach((dot) => dot.classList.remove("active"));
+
+                slides[index].classList.add("active");
+                if (images[index]) images[index].classList.add("active");
+                if (dots[index]) dots[index].classList.add("active");
+
+                currentSlideIndex = index;
+            }
+
+            function nextSlide() {
+                if (totalSlides === 0) return;
+                let newIndex = (currentSlideIndex + 1) % totalSlides;
+                showSlide(newIndex);
+            }
+
+            function startSlider() {
+                if (totalSlides <= 1) return;
+                setInterval(nextSlide, 15000);
+            }
+
+            dots.forEach((dot) => {
+                dot.addEventListener("click", function () {
+                    const slideIndex = parseInt(this.getAttribute("data-index"));
+                    showSlide(slideIndex);
+                });
+            });
+
+            if (totalSlides > 0) {
+                showSlide(0);
+                startSlider();
+            }
+
+            const form = document.querySelector(".contact-form");
+            if (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    alert("¡Gracias por tu interés! Te contactaremos pronto.");
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
